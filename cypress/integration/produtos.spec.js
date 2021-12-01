@@ -15,7 +15,7 @@ describe('Funcionalidade da pagina de produtos', () => {
         .click()
     });
 
-    it.only('Caso 2 - Deve adicionar um produto ao carrinho', () => {
+    it('Caso 2 - Deve adicionar um produto ao carrinho', () => {
         var quantidade = 3 //associando uma variavel a uma quantidade fixa
         
         cy.get('[class="product-block grid"]')
@@ -31,5 +31,14 @@ describe('Funcionalidade da pagina de produtos', () => {
         cy.get('.dropdown-toggle > .mini-cart-items').should('contain' , quantidade) //incluindo no resultado esperado a variavel que foi criada.
         //cy.get('.woocommerce-message').should('contain' , quantidade + ' x “Ariel Roll Sleeve Sweatshirt” foram adicionados no seu carrinho.')
         
+    });
+
+
+    it.only('Deve adicionar produto ao carrinho utilizando Comando Customizado', () => {
+        cy.addProdutos('Ariel Roll Sleeve Sweatshirt', 'S', 'Green' ,1)
+    });
+
+    it('Deve adicionar produto ao carrinho utilizando Comando Customizado', () => {
+        cy.addProdutos('Abominable Hoodie', 'S', 'Green' ,1)
     });
 });
